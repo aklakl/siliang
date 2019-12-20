@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let data = {"test":"mingTestBody"};
+    let url  = "/api/v1/proposal?type=about&test=ming20191211";
+    let dataType = "json";
+    //https://t.bjslck.com/api/v1/proposal?type=about
+    function myFunction() {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function(result){
+                console.log("myFunction-success");
+                $( "#temp" ).html( "<strong>" + JSON.stringify(result) + "</strong> " );
+            },
+            dataType: dataType
+        });
+    }
+    
+    function fnTest(){
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: data,
+            success: function( result ) {
+                console.log("fnTest-success");
+                $( "#temp" ).html( "<strong>" + JSON.stringify(result) + "</strong> " );
+            }
+        });
+    } 
+    
+    </script>
+
+</head>
+<body>
+
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
+<div id="temp">tempDiv</div>
+
+<button onclick="myFunction()">myFunction</button>
+<button onclick="fnTest()">fnTest</button>
+
+</body>
+</html>

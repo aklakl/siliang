@@ -1,0 +1,131 @@
+C:\software\xampp\htdocs\siliang>npm audit
+
+                       === npm audit security report ===
+
+
+                                 Manual Review
+             Some vulnerabilities require your attention to resolve
+
+          Visit https://go.npm.me/audit-guide for additional guidance
+
+
+  Moderate        Prototype Pollution
+
+  Package         hoek
+
+  Patched in      > 4.2.0 < 5.0.0 || >= 5.0.3
+
+  Dependency of   vux-loader [dev]
+
+  Path            vux-loader > less > request > hawk > boom > hoek
+
+  More info       https://npmjs.com/advisories/566
+
+
+  Moderate        Prototype Pollution
+
+  Package         hoek
+
+  Patched in      > 4.2.0 < 5.0.0 || >= 5.0.3
+
+  Dependency of   vux-loader [dev]
+
+  Path            vux-loader > less > request > hawk > cryptiles > boom > hoek
+
+  More info       https://npmjs.com/advisories/566
+
+
+  Moderate        Prototype Pollution
+
+  Package         hoek
+
+  Patched in      > 4.2.0 < 5.0.0 || >= 5.0.3
+
+  Dependency of   vux-loader [dev]
+
+  Path            vux-loader > less > request > hawk > hoek
+
+  More info       https://npmjs.com/advisories/566
+
+
+  Moderate        Prototype Pollution
+
+  Package         hoek
+
+  Patched in      > 4.2.0 < 5.0.0 || >= 5.0.3
+
+  Dependency of   vux-loader [dev]
+
+  Path            vux-loader > less > request > hawk > sntp > hoek
+
+  More info       https://npmjs.com/advisories/566
+
+
+  Moderate        Denial of Service
+
+  Package         js-yaml
+
+  Patched in      >=3.13.0
+
+  Dependency of   vux-loader [dev]
+
+  Path            vux-loader > cssnano > postcss-svgo > svgo > js-yaml
+
+  More info       https://npmjs.com/advisories/788
+
+
+  High            Code Injection
+
+  Package         js-yaml
+
+  Patched in      >=3.13.1
+
+  Dependency of   vux-loader [dev]
+
+  Path            vux-loader > cssnano > postcss-svgo > svgo > js-yaml
+
+  More info       https://npmjs.com/advisories/813
+
+
+  Moderate        Denial of Service
+
+  Package         axios
+
+  Patched in      >=0.18.1
+
+  Dependency of   vux
+
+  Path            vux > axios
+
+  More info       https://npmjs.com/advisories/880
+
+
+  Moderate        Denial of Service
+
+  Package         axios
+
+  Patched in      >=0.18.1
+
+  Dependency of   vux-uploader
+
+  Path            vux-uploader > vux > axios
+
+  More info       https://npmjs.com/advisories/880
+
+
+  Moderate        Cross-Site Scripting
+
+  Package         serialize-javascript
+
+  Patched in      >=2.1.1
+
+  Dependency of   uglifyjs-webpack-plugin [dev]
+
+  Path            uglifyjs-webpack-plugin > serialize-javascript
+
+  More info       https://npmjs.com/advisories/1426
+
+found 9 vulnerabilities (8 moderate, 1 high) in 16797 scanned packages
+  9 vulnerabilities require manual review. See the full report for details.
+
+C:\software\xampp\htdocs\siliang>
