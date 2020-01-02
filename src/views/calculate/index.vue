@@ -18,7 +18,7 @@
         <p>输入流量计参数、差压、温度、压力、计算流量</p>
       </div>
     </div>
-    <div class="media" @click="tip">
+    <div class="media" @click="toMcscllj">
       <div class="media-left">
         <img src="@/assets/calc3.png" class="img" alt />
       </div>
@@ -27,7 +27,7 @@
         <p>输入流量计参数、脉冲值、温度、压力、计算流量</p>
       </div>
     </div>
-    <div class="media" @click="tip">
+    <div class="media" @click="toXxdlscllj">
       <div class="media-left">
         <img src="@/assets/calc4.png" class="img" alt />
       </div>
@@ -38,8 +38,43 @@
     </div>
     <group>
       <!-- <cell title="流量计算" is-link @click.native="toInput"></cell> -->
-      <cell title="流体物性值计算" is-link @click.native="tip"></cell>
+      <cell title="流体物性值计算" ></cell>
+          <div class="media" @click="tip">
+            <div class="media-left">
+              <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+            </div>
+            <div class="media-body business-content">
+              <h3>水蒸汽计算</h3>
+              <p>输入流量计参数、电流信号值、温度、压力、计算流量</p>
+            </div>
+          </div>
+
+          <div class="media" @click="tip">
+            <div class="media-left">
+              <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+            </div>
+            <div class="media-body business-content">
+              <h3>天然气计算</h3>
+              <p>输入流量计参数、电流信号值、温度、压力、计算流量</p>
+            </div>
+          </div>
+
+          <div class="media" @click="tip">
+            <div class="media-left">
+              <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+            </div>
+            <div class="media-body business-content">
+              <h3>其它气体、液体物性值计算</h3>
+              <p>输入流量计参数、电流信号值、温度、压力、计算流量</p>
+            </div>
+          </div>
+
       <cell title="流量计设计计算" is-link @click.native="tip"></cell>
+      <!--
+      设计计算 标准节流装置 流量计算差压
+      设计计算 标准节流装置 流量计算开孔径
+      设计计算 皮托式流量计 流量计算差压
+      -->
       <cell title="流量工程师工具箱" is-link @click.native="tip"></cell>
     </group>
   </div>
@@ -105,6 +140,14 @@ export default {
     toCrscyllj() {
       //插入式差压流量计  crscyllj
       this.$router.push("/calculate/crscyllj");
+    },
+    toMcscllj(){
+      //脉冲输出流量计  mcscllj
+      this.$router.push("/calculate/mcscllj");
+    },
+    toXxdlscllj(){
+      //线性电流输出流量计  xxdlscllj
+      this.$router.push("/calculate/xxdlscllj");
     },
     getWxJsSignatureInfo(openId) {
       const data = {

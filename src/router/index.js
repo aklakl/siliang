@@ -35,6 +35,20 @@ export default new Router({
       }
     },
     {
+      path: '/calculate/mcscllj',
+      name: 'mcscllj',
+      component(resolve){
+        require(['@/views/calculate/mcscllj'], resolve)
+      }
+    },
+    {
+      path: '/calculate/xxdlscllj',
+      name: 'xxdlscllj',
+      component(resolve){
+        require(['@/views/calculate/xxdlscllj'], resolve)
+      }
+    },
+    {
       path: '/calculate/result',
       name: 'Result',
       component(resolve){
