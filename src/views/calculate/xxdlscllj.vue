@@ -889,7 +889,7 @@ export default {
         },
         {
           key: "4",
-          value: "标准气体",
+          value: "单一气体",
           child: [
             { key: "1", value: "空气" },
             { key: "2", value: "氮气" },

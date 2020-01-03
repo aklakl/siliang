@@ -41,31 +41,45 @@
       <cell title="流体物性值计算" ></cell>
           <div class="media" @click="tip">
             <div class="media-left">
-              <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+              <img src="@/assets/water.jpg" class="img" alt />
             </div>
             <div class="media-body business-content">
-              <h3>水蒸汽计算</h3>
-              <p>输入流量计参数、电流信号值、温度、压力、计算流量</p>
+              <h3>水和水蒸汽物性值计算</h3>
+              <p>简介：依据IAPWS-IF97标准，计算出密度、粘度、焓值等</p>
+              <p>欢迎广大工程师提出宝贵意见</p>
             </div>
           </div>
 
           <div class="media" @click="tip">
             <div class="media-left">
-              <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+              <img src="@/assets/gas.jpg" class="img" alt />
             </div>
             <div class="media-body business-content">
-              <h3>天然气计算</h3>
-              <p>输入流量计参数、电流信号值、温度、压力、计算流量</p>
+              <h3>天然气物性值计算</h3>
+              <p>简介：依据相关AGA报告、GB/T国际，计算出天然气密度、压缩系数、发热量等。</p>
+              <p>欢迎广大工程师提出宝贵意见</p>
             </div>
           </div>
 
           <div class="media" @click="tip">
             <div class="media-left">
-              <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+              <img src="@/assets/other.jpg" class="img" alt />
             </div>
             <div class="media-body business-content">
               <h3>其它气体、液体物性值计算</h3>
-              <p>输入流量计参数、电流信号值、温度、压力、计算流量</p>
+              <p>简介：依据权威手册，计算单一气体、混合气体、液体的密度、粘度、压缩系数等。</p>
+              <p>欢迎广大工程师提出宝贵意见</p>
+            </div>
+          </div>
+
+          <div class="media" @click="tip">
+            <div class="media-left">
+              <img src="@/assets/ltwxz.jpg" class="img" alt />
+            </div>
+            <div class="media-body business-content">
+              <h3>流体物性值计算</h3>
+              <p>简介：输入流体名称、温度、压力，既可计算出密度、粘度、压缩系数、发热量等。</p>
+              <p>欢迎广大工程师提出宝贵意见</p>
             </div>
           </div>
 

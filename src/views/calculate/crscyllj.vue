@@ -511,17 +511,19 @@
       >
         <span slot="right" class="unitSpan">%</span>
       </x-input>
+
       <selector
+        readonly
         placeholder="请选择"
-        v-model="inputFrom.jieliu_zhuangzhi_uchar"
-        title="节流件名称"
+        v-model="inputFrom.FlowMeter_Type"
+        title="流量计名称"
         name="name"
-        :options="jieliuNamelist"
+        :options="lljmclist"
         direction="rtl"
         text-align="right"
       ></selector>
       <x-input
-        v-model="inputFrom.guandao_koujing_set_float"
+        v-model="inputFrom.Guandao_koujing_set_float"
         title="20℃管道内径"
         placeholder="请输入"
         placeholder-align="right"
@@ -532,7 +534,7 @@
       </x-input>
       <selector
         placeholder="请选择"
-        v-model="inputFrom.guandao_caizhi_leixing_uchar"
+        v-model="inputFrom.Guandao_caizhi_leixing_uchar"
         title="管道材质"
         name="name"
         :options="pipeMatelist"
@@ -540,8 +542,9 @@
         direction="rtl"
       ></selector>
       <x-input
-        v-model="inputFrom.jieliujian_koujing_set_float"
-        title="20℃节流件开孔直径"
+        v-if="inputFrom.FlowMeter_Type==='5'"
+        v-model="inputFrom.ThroElemHoleD"
+        title="测头直径"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
@@ -549,57 +552,62 @@
       >
         <span slot="right" class="unitSpan">mm</span>
       </x-input>
-      <selector
-        placeholder="请选择"
-        v-model="inputFrom.jieliujian_caizhi_leixing_uchar"
-        title="节流件材质"
-        name="name"
-        :options="pipeMatelist"
-        text-align="right"
-        direction="rtl"
-      ></selector>
       <x-input
-        v-model="inputFrom.atm_pressure"
-        title="当地大气压"
+        v-if="inputFrom.FlowMeter_Type==='5'"
+        v-model="inputFrom.InsertDepth"
+        title="插入深度"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
+        label-width="150px"
       >
-        <span slot="right" class="unitSpan">MPa</span>
+        <span slot="right" class="unitSpan">mm</span>
       </x-input>
+      <x-input
+        v-if="inputFrom.FlowMeter_Type==='5'"
+        v-model="inputFrom.Coeffcient_C"
+        title="测头系数"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+        label-width="150px"
+      >
+      </x-input>
+      <x-input
+        v-if="inputFrom.FlowMeter_Type==='5'"
+        v-model="inputFrom.FlowCorrectFactor"
+        title="流量修正系数"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+        label-width="150px"
+      >
+      </x-input> 
     </group>
     <br />
     <div class="title">工艺参数</div>
     <group>
       <x-input
-        v-if="inputFrom.SingleGasType!='10'"
         v-model="inputFrom.gongzuo_yali_float"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
         title="工作压力（表压）"
       >
-        <!-- <span slot="label">
-          <i class="reddot">*</i>工作压力（表压）
-        </span>-->
         <span slot="right" class="unitSpan">MPa</span>
-      </x-input>
+      </x-input> 
       <x-input
-        v-if="inputFrom.SingleGasType!='11'"
-        v-model="inputFrom.gk_sheshi_wendu_float"
+        v-model="inputFrom.Gk_Sheshi_wendu_float"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
         title="工作温度"
       >
-        <!-- <span slot="label" style="margin-right:10px;">
-          <i class="reddot">*</i>工作温度
-        </span>-->
         <span slot="right" class="unitSpan">℃</span>
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='4'|| inputFrom.Fluid_Type==='5'||inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.wdt_reset"
+        v-model="inputFrom.GasHumidity"
         title="湿度"
         placeholder="请输入"
         placeholder-align="right"
@@ -608,9 +616,10 @@
         <span slot="right" class="unitSpan">%</span>
       </x-input>
       <x-input
-        v-model="inputFrom.gongkuang_chaya_float"
-        title="节流件差压值"
-        placeholder="请输入"
+        v-if="inputFrom.Fluid_Type==='6'"
+        v-model="inputFrom.Dp_Oc_Curr_float"
+        title="差压值"
+        placeholder="请输入(大于等于0)"
         placeholder-align="right"
         text-align="right"
       >
@@ -618,7 +627,7 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.ref_temp"
+        v-model="inputFrom.RefTemp"
         title="参比温度"
         placeholder="请输入"
         placeholder-align="right"
@@ -628,7 +637,7 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.ref_pres"
+        v-model="inputFrom.RefPres"
         title="参比压力（绝压）"
         placeholder="请输入"
         placeholder-align="right"
@@ -636,19 +645,19 @@
       >
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
-      <!-- <x-input
+      <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.atm_pressure"
+        v-model="inputFrom.AtmPressure"
         title="大气压"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
       >
         <span slot="right" class="unitSpan">MPa</span>
-      </x-input>-->
+      </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.ref_denisty"
+        v-model="inputFrom.RefDenisty"
         title="参比密度"
         placeholder="请输入"
         placeholder-align="right"
@@ -658,7 +667,7 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.ref_viscosity"
+        v-model="inputFrom.RefViscosity"
         title="动力粘度"
         placeholder="请输入"
         placeholder-align="right"
@@ -668,7 +677,7 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.ref_isentropic"
+        v-model="inputFrom.Dszs_float"
         title="等熵指数"
         placeholder="请输入"
         placeholder-align="right"
@@ -676,7 +685,7 @@
       ></x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.std_compression"
+        v-model="inputFrom.StdCompression"
         title="标况压缩系数"
         placeholder="请输入"
         placeholder-align="right"
@@ -684,7 +693,7 @@
       ></x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.ope_compression"
+        v-model="inputFrom.OpeCompression"
         title="工况压缩系数"
         placeholder="请输入"
         placeholder-align="right"
@@ -692,7 +701,7 @@
       ></x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='3'"
-        v-model="inputFrom.denisty_deg20"
+        v-model="inputFrom.DenistyDeg20"
         title="20℃液体密度"
         placeholder="请输入"
         placeholder-align="right"
@@ -702,24 +711,15 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='3'"
-        v-model="inputFrom.liquid_expansion"
-        title="体胀系数α_v"
+        v-model="inputFrom.LiquidExpansion"
+        title="体胀系数"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
       >
         <span slot="right" class="unitSpan">10^-3</span>
       </x-input>
-      <x-input
-        v-if="inputFrom.Fluid_Type==='3'"
-        v-model="inputFrom.viscosity_set"
-        title="动力粘度"
-        placeholder="请输入"
-        placeholder-align="right"
-        text-align="right"
-      >
-        <span slot="right" class="unitSpan">mPa.s</span>
-      </x-input>
+
     </group>
     <div style="padding:15px;">
       <flexbox>
@@ -767,17 +767,18 @@ export default {
         SingleGasType: "",
         // mt_comp: "",
         // baohezhengqi_type: "1",
+        FlowMeter_Type:"5",
         yasuo_xishu_suanfa: "1",
         jieliu_zhuangzhi_uchar: "",
-        guandao_koujing_set_float: "",
-        guandao_caizhi_leixing_uchar: "",
+        Guandao_koujing_set_float: "",
+        Guandao_caizhi_leixing_uchar: "",
         jieliujian_koujing_set_float: "",
         jieliujian_caizhi_leixing_uchar: "",
         dangdi_daqiya_float: "",
         gongzuo_yali_float: "",
-        gk_sheshi_wendu_float: "",
+        Gk_Sheshi_wendu_float: "",
         wdt_reset: "",
-        gongkuang_chaya_float: "",
+        Dp_Oc_Curr_float: "",
         m0: "",
         m1: "",
         m2: "",
@@ -826,16 +827,22 @@ export default {
         n25: "",
         n26: "",
         n27: "",
-        ref_temp: "",
-        ref_pres: "",
-        atm_pressure: "",
-        ref_denisty: "",
-        ref_viscosity: "",
-        ref_isentropic: "",
-        std_compression: "",
-        ope_compression: "",
-        denisty_deg20: "",
-        liquid_expansion: "",
+        ThroElemHoleD:"",
+        InsertDepth:"",
+        Coeffcient_C:"",
+        FlowCorrectFactor:"",
+        GasHumidity:"",
+        Dp_Oc_Curr_float:"",
+        RefTemp:"",
+        RefPres:"",
+        RefDenisty:"",
+        RefViscosity:"",
+        StdCompression:"",
+        AtmPressure: "",
+        Dszs_float: "",
+        OpeCompression: "",
+        DenistyDeg20: "",
+        LiquidExpansion: "",
         viscosity_set: ""
       },
       //1蒸汽、2、水、3其它液体、4标准气体、5混合气体、6其他气体、7天然气
@@ -877,6 +884,9 @@ export default {
         }
       ],
       namelist: [],
+      lljmclist:[
+        { key: "5", value: "皮托式流量计" }
+        ],
       ysnumberlist: [
         { key: "1", value: "AGA-NX19" }
         // "AGA8-92DC",
@@ -974,15 +984,15 @@ export default {
         // baohezhengqi_type: "1",
         yasuo_xishu_suanfa: "1",
         jieliu_zhuangzhi_uchar: "",
-        guandao_koujing_set_float: "",
-        guandao_caizhi_leixing_uchar: "",
+        Guandao_koujing_set_float: "",
+        Guandao_caizhi_leixing_uchar: "",
         jieliujian_koujing_set_float: "",
         jieliujian_caizhi_leixing_uchar: "",
         dangdi_daqiya_float: "",
         gongzuo_yali_float: "",
-        gk_sheshi_wendu_float: "",
+        Gk_Sheshi_wendu_float: "",
         wdt_reset: "",
-        gongkuang_chaya_float: "",
+        Dp_Oc_Curr_float: "",
         m0: "",
         m1: "",
         m2: "",
@@ -1031,16 +1041,23 @@ export default {
         n25: "",
         n26: "",
         n27: "",
-        ref_temp: "",
-        ref_pres: "",
-        atm_pressure: "",
-        ref_denisty: "",
-        ref_viscosity: "",
-        ref_isentropic: "",
-        std_compression: "",
-        ope_compression: "",
-        denisty_deg20: "",
-        liquid_expansion: ""
+        ThroElemHoleD:"",
+        InsertDepth:"",
+        Coeffcient_C:"",
+        FlowCorrectFactor:"",
+        GasHumidity:"",
+        Dp_Oc_Curr_float:"",
+        RefTemp:"",
+        RefPres:"",
+        RefDenisty:"",
+        RefViscosity:"",
+        StdCompression:"",
+        AtmPressure: "",
+        Dszs_float: "",
+        OpeCompression: "",
+        DenistyDeg20: "",
+        LiquidExpansion: "",
+        viscosity_set: ""
       };
     }
     // getValue(ref) {
