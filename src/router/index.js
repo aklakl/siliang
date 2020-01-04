@@ -48,6 +48,74 @@ export default new Router({
         require(['@/views/calculate/xxdlscllj'], resolve)
       }
     },
+/*
+水和水蒸汽物性值计算 		shszqwxzjs
+天然气物性值计算			trqwxzjs
+其它气体、液体物性值计算	qtqtytwxzjs
+流体物性值计算			ltwxzjs
+shui he shui zheng qi wu xing zhi ji suan
+tian ran qi wu xing zhi ji suan
+qi ta qi ti 、 ye ti wu xing zhi ji suan
+liu ti wu xing zhi ji suan
+*/
+    {
+      path: '/calculate/wxz/shszqwxzjs',
+      name: 'shszqwxzjs',
+      component(resolve){
+        require(['@/views/calculate/wxz/shszqwxzjs'], resolve)
+      }
+    },
+    {
+      path: '/calculate/wxz/trqwxzjs',
+      name: 'trqwxzjs',
+      component(resolve){
+        require(['@/views/calculate/wxz/trqwxzjs'], resolve)
+      }
+    },
+    {
+      path: '/calculate/wxz/qtqtytwxzjs',
+      name: 'qtqtytwxzjs',
+      component(resolve){
+        require(['@/views/calculate/wxz/qtqtytwxzjs'], resolve)
+      }
+    },
+    {
+      path: '/calculate/wxz/ltwxzjs',
+      name: 'ltwxzjs',
+      component(resolve){
+        require(['@/views/calculate/wxz/ltwxzjs'], resolve)
+      }
+    },
+    /*
+    流量计设计计算 lljsjjs
+    设计计算 标准节流装置 流量计算差压    bzjlzz_lljscy
+    设计计算 标准节流装置 流量计算开孔径  bjjlzz_lljskkj
+    设计计算 皮托式流量计 流量计算差压    ptsllj_lljscy
+
+    流量工程师工具箱  llgcsgjx
+    */
+    {
+      path: '/calculate/lljsjjs/bzjlzz_lljscy',
+      name: 'bzjlzz_lljscy',
+      component(resolve){
+        require(['@/views/calculate/lljsjjs/bzjlzz_lljscy'], resolve)
+      }
+    },
+    {
+      path: '/calculate/lljsjjs/bjjlzz_lljskkj',
+      name: 'bjjlzz_lljskkj',
+      component(resolve){
+        require(['@/views/calculate/lljsjjs/bjjlzz_lljskkj'], resolve)
+      }
+    },
+    {
+      path: '/calculate/lljsjjs/ptsllj_lljscy',
+      name: 'ptsllj_lljscy',
+      component(resolve){
+        require(['@/views/calculate/lljsjjs/ptsllj_lljscy'], resolve)
+      }
+    },
+
     {
       path: '/calculate/result',
       name: 'Result',
