@@ -758,7 +758,7 @@ import {
   XInput,
   Selector
 } from "vux";
-import { addCalc, detailCalc } from "@/api/calculate";
+import { tyjs,addCalc, detailCalc } from "@/api/calculate";
 import { getToken } from "@/utils/auth";
 export default {
   name: "Input",
@@ -988,7 +988,7 @@ export default {
       this.$vux.loading.show({
         text: "提交中..."
       });
-      addCalc(this.inputFrom)
+      tyjs(this.inputFrom)
         .then(result => {
           console.log(result);
           this.$store.commit("CALC_RES", result);

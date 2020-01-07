@@ -8,9 +8,29 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'login',
+      name: 'index',
+      component(resolve){
+        require(['@/views/web/login'], resolve)
+      } 
+    },
+    {
+      path: '/mobile/login',
+      name: 'mobileLogin',
       component(resolve){
         require(['@/views/Login'], resolve)
+      } 
+    },
+    {
+      path: '/web/login',
+      name: 'webLogin',
+      component(resolve){
+        require(['@/views/web/login'], resolve)
+      } 
+    },{
+      path: '/web/index',
+      name: 'webIndex',
+      component(resolve){
+        require(['@/views/web/login'], resolve)
       } 
     },
     {
