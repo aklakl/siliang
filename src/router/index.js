@@ -129,7 +129,6 @@ liu ti wu xing zhi ji suan
         require(['@/views/calculate/lljsjjs/ptsllj_lljscy'], resolve)
       }
     },
-
     {
       path: '/calculate/result',
       name: 'Result',
@@ -142,6 +141,13 @@ liu ti wu xing zhi ji suan
       name: 'commonCalcResult',
       component(resolve){
         require(['@/views/calculate/commonCalcResult'], resolve)
+      }
+    },
+    {
+      path: '/calculate/llgcsgjx/gntest',
+      name: 'gntest',
+      component(resolve){
+        require(['@/views/calculate/llgcsgjx/gntest'], resolve)
       }
     },
     

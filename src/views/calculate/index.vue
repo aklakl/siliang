@@ -138,6 +138,17 @@
       流量工程师工具箱  llgcsgjx
       -->
       <cell title="流量工程师工具箱" is-link @click.native="tip"></cell>
+      <div>
+        <div class="media" @click="toGnTest">
+          <div class="media-left">
+            <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+          </div>
+          <div class="media-body business-content">
+            <h3></h3>
+            <p>勾娜点这里测试假数据结果页面显示</p>
+          </div>
+        </div>
+      </div>
     </group>
   </div>
 </template>
@@ -270,6 +281,9 @@ export default {
     toPtsllj_lljscy(){
       //设计计算 皮托式流量计 流量计算差压    ptsllj_lljscy
       this.$router.push("/calculate/lljsjjs/ptsllj_lljscy");
+    },
+    toGnTest(){
+      this.$router.push("/calculate/llgcsgjx/gntest");
     },
 
     getWxJsSignatureInfo(openId) {

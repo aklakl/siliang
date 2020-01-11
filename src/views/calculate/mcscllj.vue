@@ -742,6 +742,7 @@
         <flexbox-item>
           <x-button type="primary" @click.native="submit">计算</x-button>
         </flexbox-item>
+        <x-button type="primary" @click.native="fn_test">fn_test</x-button>
       </flexbox>
     </div>
     <br />
@@ -995,13 +996,25 @@ export default {
           this.$router.push("/calculate/commonCalcResult");
           this.$vux.loading.hide();
           this.clearData();
-          //commonCalc
-          //this.$router.push("/calculate/commonCalcResult");
         })
         .catch(err => {
           this.$vux.loading.hide();
           this.clearData();
         });
+    },
+    fn_test(){
+      this.$vux.loading.show({
+        text: "提交中..."
+      });
+      //window.
+      let result = commonUtils.getTestResult();
+      
+      console.log(result);
+      this.$store.commit("CALC_RES", result);
+      this.$router.push("/calculate/commonCalcResult");
+      this.$vux.loading.hide();
+      this.clearData();
+ 
     },
     clearData() {
       this.inputFrom = {
