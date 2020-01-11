@@ -8,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
+      name: 'root',
       component(resolve){
         require(['@/views/web/login'], resolve)
       } 
@@ -21,12 +21,6 @@ export default new Router({
       } 
     },
     {
-      path: '/web/login',
-      name: 'webLogin',
-      component(resolve){
-        require(['@/views/web/login'], resolve)
-      } 
-    },{
       path: '/web/index',
       name: 'webIndex',
       component(resolve){
@@ -143,6 +137,14 @@ liu ti wu xing zhi ji suan
         require(['@/views/calculate/Result'], resolve)
       }
     },
+    {
+      path: '/calculate/commonCalcResult',
+      name: 'commonCalcResult',
+      component(resolve){
+        require(['@/views/calculate/commonCalcResult'], resolve)
+      }
+    },
+    
     {
       path: '/product',
       name: 'Product',

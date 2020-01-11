@@ -9,7 +9,7 @@ export function addCalc(data) {
   })
 }
 
-export function tyjs(data) {
+export function commonCalc(data) {
   return request({
     url: 'api/v1/calc/tyjs',
     method: 'POST',

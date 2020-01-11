@@ -33,6 +33,7 @@
 </template>
 
 <script>
+console.log(' loading WebApp ');
 export default {
   name: "WebApp"
 };
