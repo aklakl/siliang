@@ -1,16 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import commonUtils from '../utils/utils';
 
 Vue.use(Router)
 
-export default new Router({
+let router =  new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
       name: 'root',
       component(resolve){
-        require(['@/views/web/login'], resolve)
+        require(['@/views/Login'], resolve)
       } 
     },
     {
@@ -21,8 +22,8 @@ export default new Router({
       } 
     },
     {
-      path: '/web/index',
-      name: 'webIndex',
+      path: '/web/login',
+      name: 'webLogin',
       component(resolve){
         require(['@/views/web/login'], resolve)
       } 
@@ -30,6 +31,7 @@ export default new Router({
     {
       path: '/calculate/index',
       name: 'index',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/index'], resolve)
       } 
@@ -37,6 +39,7 @@ export default new Router({
     {
       path: '/calculate/input',
       name: 'Input',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/Input'], resolve)
       }
@@ -44,6 +47,7 @@ export default new Router({
     {
       path: '/calculate/crscyllj',
       name: 'Crscyllj',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/crscyllj'], resolve)
       }
@@ -51,6 +55,7 @@ export default new Router({
     {
       path: '/calculate/mcscllj',
       name: 'mcscllj',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/mcscllj'], resolve)
       }
@@ -58,6 +63,7 @@ export default new Router({
     {
       path: '/calculate/xxdlscllj',
       name: 'xxdlscllj',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/xxdlscllj'], resolve)
       }
@@ -75,6 +81,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/wxz/shszqwxzjs',
       name: 'shszqwxzjs',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/wxz/shszqwxzjs'], resolve)
       }
@@ -82,6 +89,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/wxz/trqwxzjs',
       name: 'trqwxzjs',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/wxz/trqwxzjs'], resolve)
       }
@@ -89,6 +97,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/wxz/qtqtytwxzjs',
       name: 'qtqtytwxzjs',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/wxz/qtqtytwxzjs'], resolve)
       }
@@ -96,6 +105,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/wxz/ltwxzjs',
       name: 'ltwxzjs',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/wxz/ltwxzjs'], resolve)
       }
@@ -111,6 +121,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/lljsjjs/bzjlzz_lljscy',
       name: 'bzjlzz_lljscy',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/lljsjjs/bzjlzz_lljscy'], resolve)
       }
@@ -118,6 +129,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/lljsjjs/bjjlzz_lljskkj',
       name: 'bjjlzz_lljskkj',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/lljsjjs/bjjlzz_lljskkj'], resolve)
       }
@@ -125,6 +137,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/lljsjjs/ptsllj_lljscy',
       name: 'ptsllj_lljscy',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/lljsjjs/ptsllj_lljscy'], resolve)
       }
@@ -132,6 +145,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/calculate/result',
       name: 'Result',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/calculate/Result'], resolve)
       }
@@ -154,6 +168,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/product',
       name: 'Product',
+      meta: { requireAuth: true},
       component(resolve){
         require(['@/views/product/Product'], resolve)
       }
@@ -229,4 +244,31 @@ liu ti wu xing zhi ji suan
       }
     },
   ]
-})
+});
+
+
+router.beforeEach((to, from, next) => {
+  //commonUtils.auth.getToken();next();
+  //console.log("router.beforeEach|from=" +JSON.stringify(from) +"| to="+JSON.stringify(to));
+  if (to.matched.some(record => record.meta.requireAuth)){ // 判断该路由是否需要登录权限
+    let isLogin = commonUtils.auth.checkToken();// 判断当前的token是否存在
+    if(isLogin) { 
+      next();
+    }else {
+      let nextRouter = {path: '/'};
+      if (commonUtils.isMobile()){
+        nextRouter.path = "/mobile/login";
+      }else{
+        nextRouter.path = "/web/login";  
+      }
+      next(nextRouter);
+    }
+  }
+  else {
+    next();
+  }
+});
+/*
+*/
+
+export default router;

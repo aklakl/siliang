@@ -13,3 +13,21 @@ export function getrefreshToken() {
 export function setrefreshToken(token) {
   return localStorage.setItem('fresh-token', token)
 }
+
+export function checkToken(){
+  let token = getToken();
+  console.log("checkToken token="+token);
+  if (token == undefined ||token=="" || token == null){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+var auth = {};
+auth.getToken = getToken;
+auth.setToken = setToken;
+auth.getrefreshToken = getrefreshToken;
+auth.setrefreshToken = setrefreshToken;
+auth.checkToken = checkToken;
+export default auth;

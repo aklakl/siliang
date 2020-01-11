@@ -2,6 +2,8 @@
  * Created by mingli on 20191219.
  */
 console.log("start loading commonUtils");
+import auth from './auth';
+
 
 var commonUtils = {}; 
 commonUtils.Json = {};
@@ -36,7 +38,8 @@ commonUtils.isMobile = function(){
   let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
   return flag;
 }
-
+//commonUtils.routerBeforeEach = 
+commonUtils.auth = auth;
 
 //==========================================================
 commonUtils.getGlobal = function(p1,p2) {

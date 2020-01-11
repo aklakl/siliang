@@ -4,7 +4,6 @@ import Vue from 'vue'
 import '@/styles/index.less' // global css
 import '@/styles/theme.less' // global css
 import App from './App'
-//import mingWebApp from './WebApp'
 import MobileApp from './MobileApp'
 import WebApp from './WebApp'
 import router from './router'
@@ -25,8 +24,8 @@ Vue.use(ConfigPlugin, {
   $layout: 'VIEW_BOX'
 })
 
-import commonUtil from './utils/utils'
-import jquery from 'jquery'
+import commonUtil from './utils/utils';
+import jquery from 'jquery';
 
 /* eslint-disable no-new */
 

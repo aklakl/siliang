@@ -742,6 +742,10 @@
         <flexbox-item>
           <x-button type="primary" @click.native="fn_test">计算</x-button>
         </flexbox-item>
+        <flexbox-item>
+          <x-button type="primary" @click.native="fnTestCheckToken">fnTestCheckToken</x-button>
+        </flexbox-item>
+        
       </flexbox>
     </div>
     <br />
@@ -759,7 +763,7 @@ import {
   Selector
 } from "vux";
 import { commonCalc,addCalc, detailCalc } from "@/api/calculate";
-import { getToken } from "@/utils/auth";
+import { checkToken,getToken } from "@/utils/auth";
 export default {
   name: "Input",
   components: {
@@ -938,6 +942,7 @@ export default {
   },
   created() {
     this.inputFrom.FlowMeter_Type = "2";
+    /*
     if (!getToken()) {
       localStorage.setItem("post", this.$router.history.current.fullPath);
       this.$router.push("/");
@@ -949,6 +954,7 @@ export default {
         }
       });
     }
+*/
   },
   methods: {
     onChange(val) {
@@ -1014,6 +1020,10 @@ export default {
       this.$vux.loading.hide();
       this.clearData();
  
+    },
+    fnTestCheckToken(){
+      let c = checkToken();
+      console.log("c = "+c);
     },
     clearData() {
       this.inputFrom = {

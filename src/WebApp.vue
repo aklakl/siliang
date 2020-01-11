@@ -35,7 +35,10 @@
 <script>
 console.log(' loading WebApp ');
 export default {
-  name: "WebApp"
+  name: "WebApp",
+  created() {
+    
+  },
 };
 </script>
 
