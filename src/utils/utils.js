@@ -3,10 +3,15 @@
  */
 console.log("start loading commonUtils");
 import auth from './auth';
+import { commonCalc,addCalc, detailCalc } from "@/api/calculate";
 
 
 var commonUtils = {}; 
 commonUtils.Json = {};
+commonUtils.form = {};
+commonUtils.form.commonCalc = commonCalc;
+commonUtils.form.addCalc = addCalc;
+commonUtils.form.detailCalc = detailCalc;
 
 ////https://segmentfault.com/q/1010000009968702
 commonUtils.Json.findKey = function(object,value) { 
@@ -40,6 +45,40 @@ commonUtils.isMobile = function(){
 }
 //commonUtils.routerBeforeEach = 
 commonUtils.auth = auth;
+commonUtils.form.commonSubmit = function(self){
+      self.$vux.loading.show({
+        text: "提交中..."
+      });
+      commonCalc(self.inputFrom)
+         .then(result => {
+            console.log(result);
+            self.$store.commit("CALC_RES", result);
+            self.$router.push("/calculate/commonCalcResult");
+            self.$vux.loading.hide();
+            self.clearData();
+         })
+        .catch(err => {
+            self.$vux.loading.hide();
+            self.clearData();
+        });
+   /*
+      this.$vux.loading.show({
+        text: "提交中..."
+      });
+      commonCalc(this.inputFrom)
+        .then(result => {
+          console.log(result);
+          this.$store.commit("CALC_RES", result);
+          this.$router.push("/calculate/commonCalcResult");
+          this.$vux.loading.hide();
+          this.clearData();
+        })
+        .catch(err => {
+          this.$vux.loading.hide();
+          this.clearData();
+        });
+        */
+}
 
 //==========================================================
 commonUtils.getGlobal = function(p1,p2) {

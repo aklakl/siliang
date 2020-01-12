@@ -16,7 +16,7 @@ export function setrefreshToken(token) {
 
 export function checkToken(){
   let token = getToken();
-  console.log("checkToken token="+token);
+  //console.log("checkToken token="+token);
   if (token == undefined ||token=="" || token == null){
     return false;
   }else{

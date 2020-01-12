@@ -584,14 +584,16 @@ export default {
       this.inputFrom.Yasuo_xishu_suanfa = val;
     },
     submit() {
+      commonUtils.form.commonSubmit(this);
+      /*
       this.$vux.loading.show({
         text: "提交中..."
       });
-      addCalc(this.inputFrom)
+      commonCalc(this.inputFrom)
         .then(result => {
           console.log(result);
           this.$store.commit("CALC_RES", result);
-          this.$router.push("/calculate/result");
+          this.$router.push("/calculate/commonCalcResult");
           this.$vux.loading.hide();
           this.clearData();
         })
@@ -599,6 +601,7 @@ export default {
           this.$vux.loading.hide();
           this.clearData();
         });
+        */
     },
     clearData() {
       this.inputFrom = {

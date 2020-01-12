@@ -742,7 +742,6 @@
         <flexbox-item>
           <x-button type="primary" @click.native="submit">计算</x-button>
         </flexbox-item>
-        <x-button type="primary" @click.native="fn_test">fn_test</x-button>
       </flexbox>
     </div>
     <br />
@@ -788,7 +787,7 @@ export default {
         dangdi_daqiya_float: "",
         gongzuo_yali_float: "",
         dangdi_daqiya_float:"",
-        FlowMeter_Type:"",
+        FlowMeter_Type:"2",
         PulseAverageFactor:"",
         Gk_Sheshi_wendu_float: "",
         GasHumidity: "",
@@ -1008,13 +1007,11 @@ export default {
       });
       //window.
       let result = commonUtils.getTestResult();
-      
       console.log(result);
       this.$store.commit("CALC_RES", result);
       this.$router.push("/calculate/commonCalcResult");
       this.$vux.loading.hide();
       this.clearData();
- 
     },
     clearData() {
       this.inputFrom = {
@@ -1033,6 +1030,7 @@ export default {
         Gk_Sheshi_wendu_float: "",
         GasHumidity: "",
         Pluse_Freq_Display_float: "",
+        FlowMeter_Type:"2",
         m0: "",
         m1: "",
         m2: "",

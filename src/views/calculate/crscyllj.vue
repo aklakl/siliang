@@ -745,9 +745,9 @@ import {
   XInput,
   Selector
 } from "vux";
-import { addCalc, detailCalc } from "@/api/calculate";
+import { commonCalc,addCalc, detailCalc } from "@/api/calculate";
 import { getToken } from "@/utils/auth";
-import { getGlobal,test } from "@/utils/utils";
+
 
 export default {
   name: "Input",
@@ -960,14 +960,11 @@ export default {
       this.$vux.loading.show({
         text: "提交中..."
       });
-      getGlobal("1","2");
-      console.log("test after getGlobal");
-      test();
-      addCalc(this.inputFrom)
+      commonCalc(this.inputFrom)
         .then(result => {
           console.log(result);
           this.$store.commit("CALC_RES", result);
-          this.$router.push("/calculate/result");
+          this.$router.push("/calculate/commonCalcResult");
           this.$vux.loading.hide();
           this.clearData();
         })
