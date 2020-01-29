@@ -158,6 +158,13 @@ liu ti wu xing zhi ji suan
       }
     },
     {
+      path: '/web/commonPreview',
+      name: 'commonPreview',
+      component(resolve){
+        require(['@/views/web/commonPreview'], resolve)
+      }
+    }, 
+    {
       path: '/calculate/llgcsgjx/gntest',
       name: 'gntest',
       component(resolve){

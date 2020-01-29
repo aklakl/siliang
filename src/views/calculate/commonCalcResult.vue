@@ -1,6 +1,7 @@
 <template>
   <div class="Result">
     <!-- title -->
+
     <div class="title">
       <p>
         <span>北京思量测控设备有限公司</span>
@@ -26,8 +27,9 @@
     </div>
 
 
-    <!-- resultContent html dom-->
-    <div id="resultContent">
+    <!-- resultContent html dom  v-html="testming"  {{ testming }} -->
+    <div  id="resultContent">
+
       <!--
       <div class="subTitle">testTile</div>
       <div class="flex-box">
@@ -53,15 +55,27 @@
     </div>
     {{resultObj}}
     -->
-
+ 
+    <div style="padding:15px;">
+      <flexbox>
+        <flexbox-item>
+          
+          <x-button v-if="isMobile" type="primary" @click.native="fnPrintResult">打印</x-button>
+        </flexbox-item>
+      </flexbox>
+    </div>
+    <br />  
+    
+    
   </div>
 </template>
 
 <script>
+
 import wx from "weixin-js-sdk";
 import { shareWX } from "@/api/login";
 import { shareWXResult } from "@/api/calculate";
-import { Flexbox, FlexboxItem } from "vux";
+import { Flexbox, FlexboxItem,XButton } from "vux";
 import { mapGetters } from "vuex";
 import { changeKeyName } from "@/utils/selectList";
 import {
@@ -74,14 +88,51 @@ export default {
   name: "Result",
   components: {
     Flexbox,
-    FlexboxItem
+    FlexboxItem,
+    XButton
   },
   computed: {
     ...mapGetters(["calcRes"])
   },
   data() {
     return {
+      /*
+      testming: function(){
+        //return this.fnLoadData(this.calcRes.resultData);
+        //return this.calcRes.resultData;
+        let htmlBox = " <div class='flex-box'> "
+                + "   <div class='vux-flexbox vux-flex-row' >"
+                + "     <div class='vux-flexbox-item'>"
+                + "       <div class='flex-left' >"
+                + "         <b class='placeHolderforTest'>tetming</b>"
+                + "       </div>"
+                + "     </div>"
+                + "     <div class='vux-flexbox-item'>"
+                + "       <div class='flex-right' >"
+                + "         <span class='resNum'> tetming tetming</span>"
+                + "       </div>"
+                + "     </div>"
+                + "   </div>"
+                + " </div>";
+        return htmlBox;
+      },
+      */
+      testming: " <div class='flex-box'> "
+                + "   <div class='vux-flexbox vux-flex-row' >"
+                + "     <div class='vux-flexbox-item'>"
+                + "       <div class='flex-left' >"
+                + "         <b class='placeHolderforTest'>tetming</b>"
+                + "       </div>"
+                + "     </div>"
+                + "     <div class='vux-flexbox-item'>"
+                + "       <div class='flex-right' >"
+                + "         <span class='resNum'> tetming tetming</span>"
+                + "       </div>"
+                + "     </div>"
+                + "   </div>"
+                + " </div>",
       vueClass:"data-v-bda26580",
+      isMobile: !commonUtils.isMobile(),
       pp: this.$route.query.pp,
       msgId: "",
       resultObj: Object,
@@ -139,7 +190,8 @@ export default {
   },
   mounted() {
     console.log("fnLoadData start");
-    this.fnLoadData(this.calcRes.resultData);
+    //this.fnLoadData(this.calcRes.resultData); //testing for gntest page
+    this.fnLoadData(this.calcRes.resultData.rd);
     console.log("fnLoadData end");
 
     if (this.pp) {
@@ -182,7 +234,7 @@ export default {
     changeKeyName,
     fnLoadData(result){
       console.log("fn_loadData.result="+JSON.stringify(result));
-      //let vueClass= "data-v-bda26580";
+      let vueClass= "data-v-bda26580";
       var datas = result;
       /*
       //test
@@ -203,12 +255,14 @@ export default {
         //jquery("#resultContent").append(html);
       }
       console.log("fnLoadData Finish");
+      
     },
     fnConcatenateTitle(data){
       let htmlTitle = "<div class='subTitle'>"+data["itemName"]+"</div>";
       //console.log("htmlTitle = "+ htmlTitle);
       let r = htmlTitle.replace(/class=/gi, ""+this.vueClass+" class=");
       //console.log("r = "+ r);
+      //let r = htmlTitle;
       return r;
     },
     fnConcatenateBox(data){
@@ -228,8 +282,14 @@ export default {
                 + " </div>";
       //console.log("htmlBox = "+ htmlBox);
       let r = htmlBox.replace(/class=/g, ""+this.vueClass+" class=");
+      //let r = htmlBox;
       //console.log("r = "+ r);
       return r;
+    },
+    fnPrintResult(){
+      console.log("fnPrintResult - Start");
+      //https://www.npmjs.com/package/vue-html-to-paper
+      console.log("fnPrintResult - Finish");
     },
     getName(val) {
       let name = "";

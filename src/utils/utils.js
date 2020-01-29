@@ -40,7 +40,9 @@ commonUtils.Json.isJson = function(obj) {
 	}
 }
 commonUtils.isMobile = function(){
-  let flag = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+  let userAgent = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)
+  console.log("userAgent = " + userAgent);
+  let flag = !userAgent ? false : true; 
   return flag;
 }
 //commonUtils.routerBeforeEach = 

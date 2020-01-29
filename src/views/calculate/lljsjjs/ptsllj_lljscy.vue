@@ -1015,8 +1015,9 @@ export default {
 
     },
     submit() {
-      alert("1111");
-      this.inputFrom.LiquidExpansion ="1111";
+      //alert("1111");
+      //this.inputFrom.LiquidExpansion ="1111";
+      commonUtils.form.commonSubmit(this);
 /*
       this.$vux.loading.show({
         text: "提交中..."

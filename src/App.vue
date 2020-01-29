@@ -1,19 +1,30 @@
 <template>
-  <div id="app">
-    <!-- this is an app-->
-    <router-view />
-  </div>
+  <div>
+    {{isMobile}}  
+    <div v-if="isMobile == true">
+      <MobileApp/>
+    </div>
+    <div v-if="isMobile == false" >
+      <WebApp/>  
+    </div>
+  </div>  
 </template>
 
 <script>
+console.log(' loading app ');
 export default {
-  name: "App"
+  name: "app",
+  components: {
+    MobileApp: () => import('./MobileApp'),
+    WebApp: () => import('./WebApp')
+  },
+  created() {
+    
+  },
+  data() {
+    return {
+      isMobile: window.commonUtils.isMobile()
+    }
+  } 
 };
 </script>
-
-<style>
-#app {
-  background: #ffffff;
-}
-</style>
-

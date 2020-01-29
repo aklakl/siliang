@@ -2,5 +2,5 @@
 module.exports = {
   ENV_PATH: "prod.env.js",
   NODE_ENV: '"production"',
-  BASE_API: '"https://ming.bjslck.com"', //测试
+  BASE_API: '"https://m.bjslck.com"', //测试
 }

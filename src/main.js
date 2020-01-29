@@ -35,12 +35,14 @@ window.jquery = jquery;
 console.log("end window.commonUtils");
 
 let init = function (){
-  let cComponent = MobileApp;
-  let cTemplate = '<MobileApp/>';
-  if ( !commonUtils.isMobile() ){
-    cComponent= WebApp;
-    cTemplate = '<WebApp/>';
-  }
+  let cComponent = App;
+  let cTemplate = '<app/>';
+  // let cComponent = MobileApp;
+  // let cTemplate = '<MobileApp/>';
+  // if ( !commonUtils.isMobile() ){
+  //   cComponent= WebApp;
+  //   cTemplate = '<WebApp/>';
+  // }
 
  return new Vue({
     router,

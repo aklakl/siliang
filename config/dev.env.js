@@ -20,6 +20,6 @@ module.exports = merge(prodEnv, {
 module.exports = merge(prodEnv, {
   ENV_PATH: "dev.env.js",
   NODE_ENV: '"mingDev"',
-  BASE_API: '"https://m.bjslck.com"', //testing for test env
+  BASE_API: '"https://t.bjslck.com"', //testing for test env
 })
 

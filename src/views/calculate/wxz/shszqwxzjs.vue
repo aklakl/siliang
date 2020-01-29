@@ -301,6 +301,8 @@ export default {
       this.inputFrom.Yasuosuanfa = val;
     },
     submit() {
+      commonUtils.form.commonSubmit(this);
+      /*
       this.$vux.loading.show({
         text: "提交中..."
       });
@@ -316,6 +318,7 @@ export default {
           this.$vux.loading.hide();
           this.clearData();
         });
+        */
     },
     clearData() {
       this.inputFrom = {

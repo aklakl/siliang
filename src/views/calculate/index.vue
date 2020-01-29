@@ -148,6 +148,17 @@
             <p>勾娜点这里测试假数据结果页面显示</p>
           </div>
         </div>
+        <div class="media" @click="toMingTest">
+          <div class="media-left">
+            <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+          </div>
+          <div class="media-body business-content">
+            <h3></h3>
+            <p>print and preview</p>
+          </div>
+        </div>
+
+
       </div>
     </group>
   </div>
@@ -285,7 +296,9 @@ export default {
     toGnTest(){
       this.$router.push("/calculate/llgcsgjx/gntest");
     },
-
+    toMingTest(){
+      this.$router.push("/web/commonPreview");
+    },
     getWxJsSignatureInfo(openId) {
       const data = {
         url: window.document.location.href,

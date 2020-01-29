@@ -9,8 +9,9 @@
       </div>
     </div>
     <div id="content">
-      <div class="left"> </div>
-      <div class="right">  </div>
+      <div class="left"> no change left</div>
+
+      <div class="right">  no change right </div>
       <div class="middle">
         <router-view />   
 
@@ -71,8 +72,6 @@ export default {
   width:100%;
   height:100px;
 }
-
-
 
 #content{
     height:100%;
