@@ -28,7 +28,7 @@ import commonUtil from './utils/utils';
 import jquery from 'jquery';
 
 /* eslint-disable no-new */
-
+//search exclude= dist,node_modules
 console.log("start window.commonUtils");
 window.commonUtils = commonUtil;
 window.jquery = jquery;

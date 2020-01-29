@@ -189,11 +189,10 @@ export default {
     };
   },
   mounted() {
-    console.log("fnLoadData start");
     //this.fnLoadData(this.calcRes.resultData); //testing for gntest page
     this.fnLoadData(this.calcRes.resultData.rd);
-    console.log("fnLoadData end");
-
+    commonUtils.setCurrentVueComponent(this);
+    
     if (this.pp) {
       shareWXResult(this.pp).then(res => {
         this.msgId = res.msgId;
@@ -233,7 +232,7 @@ export default {
   methods: {
     changeKeyName,
     fnLoadData(result){
-      console.log("fn_loadData.result="+JSON.stringify(result));
+      //console.log("fn_loadData.result="+JSON.stringify(result));
       let vueClass= "data-v-bda26580";
       var datas = result;
       /*
@@ -254,7 +253,6 @@ export default {
         }
         //jquery("#resultContent").append(html);
       }
-      console.log("fnLoadData Finish");
       
     },
     fnConcatenateTitle(data){
@@ -287,9 +285,11 @@ export default {
       return r;
     },
     fnPrintResult(){
-      console.log("fnPrintResult - Start");
       //https://www.npmjs.com/package/vue-html-to-paper
-      console.log("fnPrintResult - Finish");
+      //window.history.location = "web/commonPreview";
+      this.$store.commit("CALC_RES", this.calcRes.resultData.rd);
+      this.$store.commit("REPORT_TITLE", "reportTitle");
+      this.$router.push("/web/commonPreview");
     },
     getName(val) {
       let name = "";

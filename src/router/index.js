@@ -160,6 +160,7 @@ liu ti wu xing zhi ji suan
     {
       path: '/web/commonPreview',
       name: 'commonPreview',
+      meta: { requireFullScreen: true},
       component(resolve){
         require(['@/views/web/commonPreview'], resolve)
       }
@@ -257,6 +258,13 @@ liu ti wu xing zhi ji suan
 router.beforeEach((to, from, next) => {
   //commonUtils.auth.getToken();next();
   //console.log("router.beforeEach|from=" +JSON.stringify(from) +"| to="+JSON.stringify(to));
+  /* */
+  if (to.matched.some(record => record.meta.requireFullScreen)){ // 判断该路由是否需要登录权限
+    let currentVueComponent = commonUtils.getCurrentVueComponent();
+    //this.$store.commit("REQUIRE_FULLSCREEN", to.meta.requireFullScreen);
+    currentVueComponent.$store.commit("REQUIRE_FULLSCREEN", to.meta.requireFullScreen);
+  }
+  
   if (to.matched.some(record => record.meta.requireAuth)){ // 判断该路由是否需要登录权限
     let isLogin = commonUtils.auth.checkToken();// 判断当前的token是否存在
     if(isLogin) { 

@@ -193,7 +193,7 @@ export default {
   },
   created() {},
   mounted() {
-    console.log("token="+getToken());
+    //console.log("token="+getToken());
     if (getToken()) {
       if (!localStorage.getItem("openId")) {
         if (isweixin()) {

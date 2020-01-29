@@ -996,7 +996,7 @@ export default {
       });
       commonCalc(this.inputFrom)
         .then(result => {
-          console.log(result);
+          //console.log(result);
           this.$store.commit("CALC_RES", result);
           this.$router.push("/calculate/commonCalcResult");
           this.$vux.loading.hide();
@@ -1014,7 +1014,7 @@ export default {
       //window.
       let result = commonUtils.getTestResult();
       
-      console.log(result);
+      //console.log(result);
       this.$store.commit("CALC_RES", result);
       this.$router.push("/calculate/commonCalcResult");
       this.$vux.loading.hide();
@@ -1023,7 +1023,7 @@ export default {
     },
     fnTestCheckToken(){
       let c = checkToken();
-      console.log("c = "+c);
+      //console.log("c = "+c);
     },
     clearData() {
       this.inputFrom = {

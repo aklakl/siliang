@@ -48,21 +48,22 @@ commonUtils.isMobile = function(){
 //commonUtils.routerBeforeEach = 
 commonUtils.auth = auth;
 commonUtils.form.commonSubmit = function(self){
-      self.$vux.loading.show({
+    commonUtils.setCurrentVueComponent(self);
+    self.$vux.loading.show({
         text: "提交中..."
-      });
-      commonCalc(self.inputFrom)
-         .then(result => {
-            console.log(result);
-            self.$store.commit("CALC_RES", result);
-            self.$router.push("/calculate/commonCalcResult");
-            self.$vux.loading.hide();
-            self.clearData();
-         })
-        .catch(err => {
-            self.$vux.loading.hide();
-            self.clearData();
-        });
+    });
+    commonCalc(self.inputFrom)
+        .then(result => {
+        console.log(result);
+        self.$store.commit("CALC_RES", result);
+        self.$router.push("/calculate/commonCalcResult");
+        self.$vux.loading.hide();
+        self.clearData();
+        })
+    .catch(err => {
+        self.$vux.loading.hide();
+        self.clearData();
+    });
    /*
       this.$vux.loading.show({
         text: "提交中..."
@@ -81,7 +82,16 @@ commonUtils.form.commonSubmit = function(self){
         });
         */
 }
-
+commonUtils.currentVueComponent = {};
+commonUtils.setCurrentVueComponent = function(self){
+    commonUtils.currentVueComponent = self;
+    //let currentVueComponent = JSON.stringify(self);
+    //console.log("getCurrentVueComponent = "+currentVueComponent);
+    return self;
+}
+commonUtils.getCurrentVueComponent = () => {
+    return commonUtils.currentVueComponent;
+}
 //==========================================================
 commonUtils.getGlobal = function(p1,p2) {
   console.log("p1="+p1+"|p2="+p2);
@@ -95,7 +105,108 @@ commonUtils.testming =  function() {
 	console.log("loaded testming Success");
 }
 
-commonUtils.getTestResult =  function() {
+commonUtils.getTestResultNew =  function() {
+   let result = {
+          "resultData": {
+              "rd": [
+                  {
+                      "itemName": "流量计算参数",
+                      "sort": "4",
+                      "subitem": [
+                          {
+                              "name": "流量计名称",
+                              "sort": 0,
+                              "unit": "",
+                              "value": "脉冲输出流量计"
+                          },
+                          {
+                              "name": "仪表系数",
+                              "sort": 1,
+                              "unit": "(脉冲/m3)",
+                              "value": "1"
+                          }
+                      ]
+                  },
+                  {
+                      "itemName": "工艺参数",
+                      "sort": "3",
+                      "subitem": [
+                          {
+                              "name": "流体名称",
+                              "sort": 2,
+                              "unit": "",
+                              "value": "空气"
+                          },
+                          {
+                              "name": "工作温度",
+                              "sort": 3,
+                              "unit": "(℃)",
+                              "value": "1"
+                          },
+                          {
+                              "name": "工作压力（表压）",
+                              "sort": 4,
+                              "unit": "(MPa)",
+                              "value": "1"
+                          },
+                          {
+                              "name": "脉冲频率值",
+                              "sort": 5,
+                              "unit": "(Hz)",
+                              "value": "1"
+                          },
+                          {
+                              "name": "当地大气压",
+                              "sort": 6,
+                              "unit": "(MPa)",
+                              "value": "1"
+                          }
+                      ]
+                  },
+                  {
+                      "itemName": "计算结果",
+                      "sort": "2",
+                      "subitem": [
+                          {
+                              "name": "工况体积流量qv",
+                              "sort": 1,
+                              "unit": "(m3/h)",
+                              "value": "0"
+                          },
+                          {
+                              "name": "质量流量qm",
+                              "sort": 2,
+                              "unit": "(kg/h)",
+                              "value": "0"
+                          },
+                          {
+                              "name": "能量流量qE",
+                              "sort": 3,
+                              "unit": "（MJ?h）",
+                              "value": "0"
+                          },
+                          {
+                              "name": "工况密度",
+                              "sort": 4,
+                              "unit": "(kg/m3)",
+                              "value": "1000"
+                          },
+                          {
+                              "name": "焓值",
+                              "sort": 5,
+                              "unit": "（MJ/h）",
+                              "value": "0"
+                          }
+                      ]
+                  }
+              ]
+          },
+          "time": "1985年01月28日 23:30"
+  }
+  return result;
+}
+
+commonUtils.getTestResultOld =  function() {
    let result = {
     "resultData": [
             { 
@@ -195,6 +306,8 @@ commonUtils.getTestResult =  function() {
   return result;
 }
 
+commonUtils.getTestResult = commonUtils.getTestResultNew;
+//commonUtils.getTestResult = commonUtils.getTestResultOld;
 //==========================================================
 
 /*

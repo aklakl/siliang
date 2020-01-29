@@ -1016,7 +1016,7 @@ export default {
       });
       commonCalc(this.inputFrom)
         .then(result => {
-          console.log(result);
+          //console.log(result);
           this.$store.commit("CALC_RES", result);
           this.$router.push("/calculate/commonCalcResult");
           this.$vux.loading.hide();

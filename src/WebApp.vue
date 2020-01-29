@@ -9,9 +9,9 @@
       </div>
     </div>
     <div id="content">
-      <div class="left"> no change left</div>
+      <div class="left"> </div>
 
-      <div class="right">  no change right </div>
+      <div class="right">   </div>
       <div class="middle">
         <router-view />   
 
