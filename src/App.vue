@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{isMobile}}  
+    <!-- {{isMobile}}  -->
     <div v-if="isMobile == true">
       <MobileApp/>
     </div>

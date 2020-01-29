@@ -11,7 +11,7 @@ let router =  new Router({
       path: '/',
       name: 'root',
       component(resolve){
-        require(['@/views/Login'], resolve)
+        require(['@/views/calculate/index'], resolve)
       } 
     },
     {

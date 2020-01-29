@@ -1,7 +1,7 @@
 <template>
   <!-- this is a WebApp --> 
   <div id="webApp" >
-    WebApp
+    
     <!-- this is a WebApp -->
     <div id="WebApp_top" class= "WebApp_top"> 
       <div class="logo">

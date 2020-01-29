@@ -193,6 +193,7 @@ export default {
   },
   created() {},
   mounted() {
+    console.log("token="+getToken());
     if (getToken()) {
       if (!localStorage.getItem("openId")) {
         if (isweixin()) {
@@ -207,6 +208,10 @@ export default {
       } else {
         this.getWxJsSignatureInfo(localStorage.getItem("openId"));
       }
+    }else{
+      let loginUrl = window.commonUtils.isMobile() ? "/mobile/login" : "/web/login";
+      loginUrl = "/mobile/login";
+      window.document.location = loginUrl;
     }
   },
   methods: {

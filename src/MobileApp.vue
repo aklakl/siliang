@@ -1,6 +1,6 @@
 <template>
   <div id="mobileApp" >
-    MobileApp
+    
     <!-- this is a MobileApp-->
     <router-view />
   </div>
