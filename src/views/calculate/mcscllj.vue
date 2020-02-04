@@ -675,7 +675,7 @@
       >
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
-
+<!--
       <x-input
         v-model="inputFrom.AtmPressure"
         title="大气压"
@@ -685,7 +685,7 @@
       >
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
-
+-->
       <x-input
         v-if="inputFrom.fluid_type==='6'"
         v-model="inputFrom.RefDenisty"
@@ -952,6 +952,7 @@ export default {
   },
   methods: {
     onChange(val) {
+      this.inputFrom.FlowMeter_Type="2";
       if (val === "7") { //7=天然气
         this.inputFrom.Yasuosuanfa = "1";
       }else{

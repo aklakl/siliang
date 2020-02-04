@@ -98,7 +98,7 @@
       
       
     <div @click="fn_show_lljsjjs()">
-    <cell title="流量计设计计算" is-link @click.native="tip"></cell>
+    <cell title="流量计设计计算" ></cell>
     </div>
     <div v-show="flag_show_lljsjjs" >
         <div class="media" @click="toBzjlzz_lljscy">

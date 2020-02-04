@@ -59,8 +59,7 @@
     <div style="padding:15px;">
       <flexbox>
         <flexbox-item>
-          
-          <x-button v-if="isMobile" type="primary" @click.native="fnPrintResult">打印</x-button>
+          <x-button v-if="isMobile" type="primary" @click.native="fnPrintResult">打印预览</x-button>
         </flexbox-item>
       </flexbox>
     </div>
@@ -192,7 +191,7 @@ export default {
     //this.fnLoadData(this.calcRes.resultData); //testing for gntest page
     this.fnLoadData(this.calcRes.resultData.rd);
     commonUtils.setCurrentVueComponent(this);
-    
+
     if (this.pp) {
       shareWXResult(this.pp).then(res => {
         this.msgId = res.msgId;
@@ -288,7 +287,7 @@ export default {
       //https://www.npmjs.com/package/vue-html-to-paper
       //window.history.location = "web/commonPreview";
       this.$store.commit("CALC_RES", this.calcRes.resultData.rd);
-      this.$store.commit("REPORT_TITLE", "reportTitle");
+      this.$store.commit("REPORT_TITLE", "TestReportTitle");
       this.$router.push("/web/commonPreview");
     },
     getName(val) {

@@ -1,6 +1,6 @@
 
 <template>
-  <div class="Result">
+  <div id="printTemplate" class="Result">
     <!-- demo -->
     <!--
     <table id="dataContent">
@@ -90,7 +90,17 @@
     </tr>
     </div>
     -->
+    
+    <div style="padding:15px;">
+      <flexbox>
+        <flexbox-item>
+          <x-button  type="primary" @click.native="fnPrintResult">打印</x-button>
+        </flexbox-item>
+      </flexbox>
+    </div>
+
   </div>
+  
 </template>
 
 
@@ -98,18 +108,24 @@
 
 //console.log(' loading commonPreview ');
 import { mapGetters } from "vuex";
-
+import { Flexbox, FlexboxItem,XButton } from "vux";
 export default {
   name: "commonPreview",
+  components: {
+    Flexbox,
+    FlexboxItem,
+    XButton
+  },
   computed: {
     ...mapGetters(["calcRes","reportTitle"])
     //...mapGetters('rwOptions', ['cognitoAuthEnabled']),
   },
   data() {
     return {
-      resultObj: commonUtils.getTestResult().resultData.rd,
+      resultObj: this.$store.state.calculate.calcRes,
+      //resultObj: commonUtils.getTestResult().resultData.rd,
       vueClass: "data-v-0fc70838",
-      //reportTitle: this.reportTitle,
+      //reportTitle: this.$store.state.calculate.reportTitle,
       result: commonUtils.getTestResult()
     };
   },
@@ -150,7 +166,12 @@ export default {
       //console.log("htmlTitle = "+ htmlTitle);
       let r = htmlTitle.replace(/class=/g, ""+this.vueClass+" class=");
       return r;
-    }
+    },
+    fnPrintResult(){
+      //https://www.npmjs.com/package/vue-html-to-paper
+      console.log("fnPrintResult");
+      this.$htmlToPaper('printTemplate');
+    },
   } 
 };
 

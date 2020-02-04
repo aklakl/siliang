@@ -23,9 +23,27 @@ import { ConfigPlugin } from 'vux'
 Vue.use(ConfigPlugin, {
   $layout: 'VIEW_BOX'
 })
+import VueHtmlToPaper from 'vue-html-to-paper';
+const optionsPrint = {
+  name: '_blank',
+  specs: [
+    'fullscreen=yes',
+    'titlebar=yes',
+    'scrollbars=yes'
+  ],
+  styles: [
+    'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+    'https://unpkg.com/kidlat-css/css/kidlat.css'
+  ]
+}
+//Vue.use(VueHtmlToPaper, optionsPrint);
+Vue.use(VueHtmlToPaper);
 
 import commonUtil from './utils/utils';
 import jquery from 'jquery';
+
+
+
 
 /* eslint-disable no-new */
 //search exclude= dist,node_modules
