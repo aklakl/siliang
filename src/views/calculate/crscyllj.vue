@@ -762,7 +762,9 @@ export default {
   },
   data() {
     return {
-      inputFrom: {
+      inputFrom: this.initData(),
+      /*{
+        type_uchar:"1", 
         Fluid_Type: "",
         SingleGasType: "",
         // mt_comp: "",
@@ -846,6 +848,7 @@ export default {
         LiquidExpansion: "",
         viscosity_set: ""
       },
+      */
       //1蒸汽、2、水、3其它液体、4标准气体、5混合气体、6其他气体、7天然气
       typelist: [
         {
@@ -975,8 +978,99 @@ export default {
         });
     },
     clearData() {
-      this.inputFrom = {
+      this.inputFrom = this.initData();
+    }, 
+    initData() {
+      let inputFrom = {
+        type_uchar:"1", 
         Fluid_Type: "",
+        SingleGasType: "",
+        // mt_comp: "",
+        // baohezhengqi_type: "1",
+        FlowMeter_Type:"5",
+        yasuo_xishu_suanfa: "1",
+        jieliu_zhuangzhi_uchar: "",
+        Guandao_koujing_set_float: "",
+        Guandao_caizhi_leixing_uchar: "",
+        jieliujian_koujing_set_float: "",
+        jieliujian_caizhi_leixing_uchar: "",
+        dangdi_daqiya_float: "",
+        gongzuo_yali_float: "",
+        Gk_Sheshi_wendu_float: "",
+        wdt_reset: "",
+        Dp_Oc_Curr_float: "",
+        Verabar_SensorCode:"",
+        m0: "",
+        m1: "",
+        m2: "",
+        m3: "",
+        m4: "",
+        m5: "",
+        m6: "",
+        m7: "",
+        m8: "",
+        m9: "",
+        m10: "",
+        m11: "",
+        m12: "",
+        m13: "",
+        m14: "",
+        m15: "",
+        m16: "",
+        m17: "",
+        m18: "",
+        m19: "",
+        n0: "",
+        n1: "",
+        n2: "",
+        n3: "",
+        n4: "",
+        n5: "",
+        n6: "",
+        n7: "",
+        n8: "",
+        n9: "",
+        n10: "",
+        n11: "",
+        n12: "",
+        n13: "",
+        n14: "",
+        n15: "",
+        n16: "",
+        n17: "",
+        n18: "",
+        n19: "",
+        n20: "",
+        n21: "",
+        n22: "",
+        n23: "",
+        n24: "",
+        n25: "",
+        n26: "",
+        n27: "",
+        ThroElemHoleD:"",
+        InsertDepth:"",
+        Coeffcient_C:"",
+        FlowCorrectFactor:"",
+        GasHumidity:"",
+        Dp_Oc_Curr_float:"",
+        RefTemp:"",
+        RefPres:"",
+        RefDenisty:"",
+        RefViscosity:"",
+        StdCompression:"",
+        AtmPressure: "",
+        Dszs_float: "",
+        OpeCompression: "",
+        DenistyDeg20: "",
+        LiquidExpansion: "",
+        viscosity_set: ""
+      };
+      
+      /*{
+        type_uchar:"1",  
+        Fluid_Type: "",
+        
         SingleGasType: "",
         // mt_comp: "",
         // baohezhengqi_type: "1",
@@ -1058,13 +1152,10 @@ export default {
         LiquidExpansion: "",
         viscosity_set: ""
       };
+      */
+      return inputFrom;
     }
-    // getValue(ref) {
-    //   this.$vux.alert.show({
-    //     title: "getFullValue",
-    //     content: this.$refs[ref].getFullValue()
-    //   });
-    // }
+    
   }
 };
 </script>

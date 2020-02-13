@@ -103,7 +103,7 @@
     <div v-show="flag_show_lljsjjs" >
         <div class="media" @click="toBzjlzz_lljscy">
           <div class="media-left">
-            <img src="@/assets/WechatIMG1016.jpeg" class="img" alt />
+            <img src="@/assets/sjjs_bzjlzz_lljscy.jpg" class="img" alt />
           </div>
           <div class="media-body business-content">
             <h3>标准节流装置——流量计算差压</h3>
@@ -112,7 +112,7 @@
         </div>
         <div class="media" @click="toBjjlzz_lljskkj">
           <div class="media-left">
-            <img src="@/assets/calc3.png" class="img" alt />
+            <img src="@/assets/sjjs_bzjlzz_kkj.jpg" class="img" alt />
           </div>
           <div class="media-body business-content">
             <h3>标准节流装置——流量计算开孔径 </h3>
@@ -121,7 +121,7 @@
         </div>
         <div class="media" @click="toPtsllj_lljscy">
           <div class="media-left">
-            <img src="@/assets/calc4.png" class="img" alt />
+            <img src="@/assets/sjjs_ptslljs_lljscy.jpg" class="img" alt />
           </div>
           <div class="media-body business-content">
             <h3>皮托式流量计——流量计算差压</h3>
@@ -244,6 +244,8 @@ export default {
       }
     },
     tip() {
+      console.log("tip");
+      /*
       this.$vux.alert.show({
         title: "温馨提示",
         content: "功能正在测试中..."
@@ -254,6 +256,7 @@ export default {
         //   console.log("Plugin: I'm hiding now");
         // }
       });
+      */
     },
     toInput() {
       this.$router.push("/calculate/input");

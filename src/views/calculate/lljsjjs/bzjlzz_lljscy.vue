@@ -779,6 +779,8 @@ export default {
   },
   data() {
     return {
+      inputFrom: this.initData(),
+      /*
       inputFrom: {
         Fluid_Type: "",
         SingleGasType: "",
@@ -870,6 +872,7 @@ export default {
         DenistyDeg20: "",
         LiquidExpansion: ""
       },
+      */
       typelist: [
         {
           //1蒸汽、2、水、3其它液体、4标准气体、5混合气体、6其他气体、7天然气
@@ -1030,7 +1033,105 @@ export default {
         });
         */
     },
+    initData() {
+      let inputFrom = {
+        type_uchar:"7",
+        Fluid_Type: "",
+        SingleGasType: "",
+        // mt_comp: "",
+        // baohezhengqi_type: "1",
+        Yasuosuanfa: "1",
+        jieliu_zhuangzhi_uchar: "",
+        guandao_koujing_set_float: "",
+        guandao_caizhi_leixing_uchar: "",
+        jieliujian_koujing_set_float: "",
+        jieliujian_caizhi_leixing_uchar: "",
+        dangdi_daqiya_float: "",
+        gongzuo_yali_float: "",
+        dangdi_daqiya_float:"",
+        FlowMeter_Type:"",
+        FlowInputUnit:"",
+        DpLrv:"",
+        DpUrv:"",
+        DesignTemp:"",
+        DesignPres:"",
+        gongzuo_yali_float:"",
+        AtmPressure:"",
+        Gk_Sheshi_wendu_float:"",
+        GasHumidity:"",
+        Flow_Input_mA_float:"",
+        RefTemp:"",
+        RefPres:"",
+        AtmPressure:"",
+        RefDenisty:"",
+        StdCompression:"",
+        OpeCompression:"",
+        
+        PulseAverageFactor:"",
+
+        m0: "",
+        m1: "",
+        m2: "",
+        m3: "",
+        m4: "",
+        m5: "",
+        m6: "",
+        m7: "",
+        m8: "",
+        m9: "",
+        m10: "",
+        m11: "",
+        m12: "",
+        m13: "",
+        m14: "",
+        m15: "",
+        m16: "",
+        m17: "",
+        m18: "",
+        m19: "",
+        n0: "",
+        n1: "",
+        n2: "",
+        n3: "",
+        n4: "",
+        n5: "",
+        n6: "",
+        n7: "",
+        n8: "",
+        n9: "",
+        n10: "",
+        n11: "",
+        n12: "",
+        n13: "",
+        n14: "",
+        n15: "",
+        n16: "",
+        n17: "",
+        n18: "",
+        n19: "",
+        n20: "",
+        n21: "",
+        n22: "",
+        n23: "",
+        n24: "",
+        n25: "",
+        n26: "",
+        n27: "",
+        AtmPressure: "",
+        RefDenisty: "",
+        ref_viscosity: "",
+        ref_isentropic: "",
+        StdCompression: "",
+        OpeCompression: "",
+        DenistyDeg20: "",
+        LiquidExpansion: ""
+      }
+
+      return inputFrom;
+    },
     clearData() {
+      this.inputFrom = this.initData();
+      /*
       this.inputFrom = {
         Fluid_Type: "",
         SingleGasType: "",
@@ -1108,6 +1209,7 @@ export default {
         DenistyDeg20: "",
         LiquidExpansion: ""
       };
+      */
     }
     // getValue(ref) {
     //   this.$vux.alert.show({
