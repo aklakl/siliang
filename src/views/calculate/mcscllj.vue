@@ -611,10 +611,10 @@
         </span>-->
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
-
+      <!-- inputFrom.dangdi_daqiya_float  AtmPressure -->
       <x-input
         v-if="inputFrom.SingleGasType!='10'"
-        v-model="inputFrom.dangdi_daqiya_float"
+        v-model="inputFrom.AtmPressure"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
@@ -1021,7 +1021,7 @@ export default {
     initData(){
       let inputFrom = {
         type_uchar: "2",
-        fluid_type: "",
+        fluid_type: "2",
         SingleGasType: "",
         // mt_comp: "",
         // baohezhengqi_type: "1",

@@ -523,7 +523,7 @@
         text-align="right"
       ></selector>
       <x-input
-        v-model="inputFrom.Guandao_koujing_set_float"
+        v-model="inputFrom.PipeID"
         title="20℃管道内径"
         placeholder="请输入"
         placeholder-align="right"
@@ -534,7 +534,7 @@
       </x-input>
       <selector
         placeholder="请选择"
-        v-model="inputFrom.Guandao_caizhi_leixing_uchar"
+        v-model="inputFrom.PipeMaterial"
         title="管道材质"
         name="name"
         :options="pipeMatelist"
@@ -677,7 +677,7 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.Dszs_float"
+        v-model="inputFrom.RefIsentropic"
         title="等熵指数"
         placeholder="请输入"
         placeholder-align="right"
@@ -992,6 +992,9 @@ export default {
         jieliu_zhuangzhi_uchar: "",
         Guandao_koujing_set_float: "",
         Guandao_caizhi_leixing_uchar: "",
+        PipeID:"",
+        PipeMaterial:"",
+        RefIsentropic:"",
         jieliujian_koujing_set_float: "",
         jieliujian_caizhi_leixing_uchar: "",
         dangdi_daqiya_float: "",
