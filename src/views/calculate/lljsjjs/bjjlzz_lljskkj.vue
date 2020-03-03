@@ -511,7 +511,7 @@
       >
         <span slot="right" class="unitSpan">%</span>
       </x-input>
-  <!--
+
       <selector
         placeholder="请选择"
         v-model="inputFrom.jieliu_zhuangzhi_uchar"
@@ -521,6 +521,17 @@
         direction="rtl"
         text-align="right"
       ></selector>
+     <!-- 网页和微信不同 jieliujianshangyouzuliujianlist -->
+      <selector
+        placeholder="请选择"
+        v-model="inputFrom.jieliu_shangyou_uchar"
+        title="节流件上游阻流件"
+        name="name"
+        :options="jieliujianshangyouzuliujianlist"
+        direction="rtl"
+        text-align="right"
+      ></selector>
+
       <x-input
         v-model="inputFrom.guandao_koujing_set_float"
         title="20℃管道内径"
@@ -531,6 +542,7 @@
       >
         <span slot="right" class="unitSpan">mm</span>
       </x-input>
+
       <selector
         placeholder="请选择"
         v-model="inputFrom.guandao_caizhi_leixing_uchar"
@@ -540,26 +552,27 @@
         text-align="right"
         direction="rtl"
       ></selector>
+
       <x-input
-        v-model="inputFrom.jieliujian_koujing_set_float"
-        title="20℃节流件开孔直径"
+        v-model="inputFrom.yunxu_yasun_double"
+        title="允许压力损失"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
         label-width="150px"
       >
-        <span slot="right" class="unitSpan">mm</span>
+        <span slot="right" class="unitSpan">kPa</span>
       </x-input>
       <selector
         placeholder="请选择"
-        v-model="inputFrom.jieliujian_caizhi_leixing_uchar"
+        v-model="inputFrom.Jieliujian_caizhi_leixing_uchar"
         title="节流件材质"
         name="name"
         :options="pipeMatelist"
         text-align="right"
         direction="rtl"
       ></selector>
-      -->
+    <!--  -->
       
     </group>
     <br />
@@ -575,6 +588,7 @@
         direction="rtl"
         text-align="right"
       ></selector>
+      <!--
       <selector
         readonly
         placeholder="请选择"
@@ -585,7 +599,7 @@
         direction="rtl"
         text-align="right"
       ></selector>
-      
+      -->
 
       <x-input
         v-model="inputFrom.DpLrv"
@@ -661,6 +675,17 @@
       >
         <span slot="right" class="unitSpan">%</span>
       </x-input>
+
+      <selector
+        placeholder="请选择"
+        v-model="inputFrom.Jieliujian_lldw_uchar"
+        title="流量单位"
+        name="name"
+        :options="lldwlist"
+        text-align="right"
+        direction="rtl"
+      ></selector>
+      <!--
       <x-input
         v-model="inputFrom.Flow_Input_mA_float"
         title="流量信号电流值"
@@ -670,7 +695,68 @@
       >
         <span slot="right" class="unitSpan">mA</span>
       </x-input>
+      -->
       <x-input
+        v-model="inputFrom.FlowInputMax_double"
+        title="最大流量"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">{{inputFrom.Jieliujian_lldw_uchar}}</span>
+      </x-input>
+      <x-input
+        v-model="inputFrom.FlowInputCom_double"
+        title="常用流量"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">{{inputFrom.Jieliujian_lldw_uchar}}</span>
+      </x-input>
+      <x-input
+        v-model="inputFrom.FlowInputMin_double"
+        title="最小流量"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">{{inputFrom.Jieliujian_lldw_uchar}}</span>
+      </x-input>
+
+      <selector
+        placeholder="请选择"
+        v-model="inputFrom.Chaya_Auto_yes"
+        title="差压量程(自动计算否)"
+        name="name"
+        :options="cylcList"
+        text-align="right"
+        direction="rtl"
+      ></selector>
+
+      <x-input
+        v-if="inputFrom.Chaya_Auto_yes==='0'"
+        v-model="inputFrom.chaya_liangcheng_double"
+        title="差压量程"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">Pa</span>
+      </x-input>
+      <!--
+      <x-input
+        v-model="inputFrom.Flow_Input_mA_float"
+        title="流量信号电流值"
+        placeholder="请输入(大于等于4)"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">mA</span>
+      </x-input>
+      -->
+      <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.RefTemp"
         title="参比温度"
         placeholder="请输入"
@@ -680,6 +766,7 @@
         <span slot="right" class="unitSpan">℃</span>
       </x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.RefPres"
         title="参比压力（绝压）"
         placeholder="请输入"
@@ -690,7 +777,7 @@
       </x-input>
       <x-input
         v-model="inputFrom.AtmPressure"
-        title="大气压"
+        title="当地大气压"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
@@ -698,6 +785,7 @@
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.RefDenisty"
         title="参比密度"
         placeholder="请输入"
@@ -706,7 +794,29 @@
       >
         <span slot="right" class="unitSpan">kg/m3</span>
       </x-input>
+
       <x-input
+        v-if="inputFrom.Fluid_Type==='6' && inputFrom.Fluid_Type==='3'"
+        v-model="inputFrom.RefViscosity"
+        title="动力粘度"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">mPa.s</span>
+      </x-input>
+      <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
+        v-model="inputFrom.RefIsentropic"
+        title="等熵指数"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">mPa.s</span>
+      </x-input>
+      <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.StdCompression"
         title="标况压缩系数"
         placeholder="请输入"
@@ -714,6 +824,7 @@
         text-align="right"
       ></x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.OpeCompression"
         title="工况压缩系数"
         placeholder="请输入"
@@ -721,6 +832,7 @@
         text-align="right"
       ></x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='3'"
         v-model="inputFrom.DenistyDeg20"
         title="20℃液体密度"
         placeholder="请输入"
@@ -730,6 +842,7 @@
         <span slot="right" class="unitSpan">kg/m3</span>
       </x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='3'"
         v-model="inputFrom.LiquidExpansion"
         title="体胀系数"
         placeholder="请输入"
@@ -950,10 +1063,8 @@ export default {
         { key: "5", value: "长径喷嘴" },
         { key: "6", value: "粗铸收缩段文丘里" },
         { key: "7", value: "机械加工收缩段文丘里" },
-        { key: "8", value: "粗焊铁板收缩段文丘里" },
-        { key: "9", value: "文丘里喷嘴" },
-        { key: "10", value: "1/4 圆孔板" },
-        { key: "11", value: "锥形孔板" }
+        { key: "8", value: "粗焊铁板收缩段文丘里" }
+
       ],
       pipeMatelist: [
         { key: "1", value: "10号钢" },
@@ -970,6 +1081,24 @@ export default {
         { key: "12", value: "Cr5Mo" },
         { key: "13", value: "Cr17" },
         { key: "14", value: "15CrMo" }
+      ],
+      cylcList:[
+        { key: "1", value: "自动计算" },
+        { key: "0", value: "手动计算" }
+      ],
+      jieliujianshangyouzuliujianlist:[
+        { key: "1", value: "单个90°弯头，任一平面上2个90°弯头	"},
+        { key: "2", value: "同一平面上两个90°弯头：S形结构（30D≥S>10D）"},
+        { key: "3", value: "同一平面两个90°弯头：S形结构（10D≥S）"},
+        { key: "4", value: "互成垂直平面上两个90°弯头（30D≥S≥5D）"},
+        { key: "5", value: "互成垂直平面上两个90°弯头（5D>S）"},
+        { key: "6", value: "带或不带延伸部分的单个90°三通斜接90°弯头"},
+        { key: "7", value: "单个45°弯头 同一平面上两个45°弯头（S≥2D）"},
+        { key: "8", value: "同心渐缩管（在1.5D～3D长度内由2D变为D）"},
+        { key: "9", value: "同心渐扩管（在D～2D长度内由0.5D变为D）"},
+        { key: "10", value: "全孔球阀或闸阀全开"},
+        { key: "11", value: "突然对称收缩"},
+        { key: "12", value: "温度计插套或套管直径≤0.03D"}
       ]
     };
   },
@@ -1036,6 +1165,7 @@ export default {
     initData() {
       // 
       let inputFrom =   {
+        
         type_uchar:"8", 
         Fluid_Type: "",
         SingleGasType: "",
@@ -1068,6 +1198,16 @@ export default {
         StdCompression:"",
         OpeCompression:"",
         PulseAverageFactor:"",
+        jieliu_shangyou_uchar:"",
+        yunxu_yasun_double:"",
+        FlowInputMax_double:"",
+        FlowInputCom_double:"",
+        FlowInputMin_double:"",
+        Chaya_Auto_yes:"1",
+        chaya_liangcheng_double:"",
+        RefViscosity:"",
+        RefIsentropic:"",
+
         m0: "",
         m1: "",
         m2: "",

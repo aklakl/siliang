@@ -511,16 +511,8 @@
       >
         <span slot="right" class="unitSpan">%</span>
       </x-input>
-  <!--
-      <selector
-        placeholder="请选择"
-        v-model="inputFrom.jieliu_zhuangzhi_uchar"
-        title="节流件名称"
-        name="name"
-        :options="jieliuNamelist"
-        direction="rtl"
-        text-align="right"
-      ></selector>
+
+
       <x-input
         v-model="inputFrom.guandao_koujing_set_float"
         title="20℃管道内径"
@@ -540,6 +532,18 @@
         text-align="right"
         direction="rtl"
       ></selector>
+  <!--
+      <selector
+        placeholder="请选择"
+        v-model="inputFrom.jieliu_zhuangzhi_uchar"
+        title="节流件名称"
+        name="name"
+        :options="jieliuNamelist"
+        direction="rtl"
+        text-align="right"
+      ></selector>
+
+
       <x-input
         v-model="inputFrom.jieliujian_koujing_set_float"
         title="20℃节流件开孔直径"

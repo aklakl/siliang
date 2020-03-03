@@ -269,6 +269,27 @@
         <span slot="right" class="unitSpan">kg/m3</span>
       </x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
+        v-model="inputFrom.RefTemp"
+        title="参比温度"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">℃ </span>
+      </x-input>
+      <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
+        v-model="inputFrom.RefPres"
+        title="参比压力（绝压）"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">MPa</span>
+      </x-input>
+
+      <x-input
         v-if="inputFrom.Fluid_Type==='6'||inputFrom.Fluid_Type==='3'"
         v-model="inputFrom.RefViscosity"
         title="动力粘度"
@@ -286,7 +307,9 @@
         placeholder-align="right"
         text-align="right"
       ></x-input>
+
       <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.StdCompression"
         title="标况压缩系数"
         placeholder="请输入"
@@ -294,12 +317,14 @@
         text-align="right"
       ></x-input>
       <x-input
+        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.OpeCompression"
         title="工况压缩系数"
         placeholder="请输入"
         placeholder-align="right"
         text-align="right"
       ></x-input>
+
       <x-input
         v-if="inputFrom.Fluid_Type==='3'"
         v-model="inputFrom.DenistyDeg20"

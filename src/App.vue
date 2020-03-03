@@ -13,7 +13,7 @@
 <script>
 //console.log(' loading app ');
 import { mapGetters } from "vuex";
-
+//vux API:https://doc.vux.li/zh-CN/components/selector.html#props-value
 export default {
   name: "app",
   components: {

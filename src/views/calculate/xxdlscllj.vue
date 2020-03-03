@@ -566,7 +566,7 @@
     <div class="title">工艺参数</div>
     <group>
       <selector
-        readonly
+        
         placeholder="请选择"
         v-model="inputFrom.FlowMeter_Type"
         title="流量计名称"
@@ -575,8 +575,8 @@
         direction="rtl"
         text-align="right"
       ></selector>
+
       <selector
-        readonly
         placeholder="请选择"
         v-model="inputFrom.FlowInputUnit"
         title="流量信号单位"
@@ -585,8 +585,17 @@
         direction="rtl"
         text-align="right"
       ></selector>
-      
-
+    <!-- 
+      {{key1}}{{value1}}{{value}},{{inputFrom.FlowInputUnit}}
+      @on-change="llxhdwlist_onChange(key1,value1)"
+      :key="key1"
+        :value="value1"
+      placeholder="请选择"
+        v-model="mian"
+        :options="llxhdwlist"
+        option-value="mian.value"
+        option-id="mian.key"
+    -->
       <x-input
         v-model="inputFrom.DpLrv"
         title="流量信号下量程"
@@ -594,7 +603,7 @@
         placeholder-align="right"
         text-align="right"
       >
-        <span slot="right" class="unitSpan">$inputFrom.FlowInputUnit</span>
+        <span slot="right" class="unitSpan">{{showFlowInputUnitValue()}}</span>
       </x-input>
       <x-input
         v-model="inputFrom.DpUrv"
@@ -603,7 +612,7 @@
         placeholder-align="right"
         text-align="right"
       >
-        <span slot="right" class="unitSpan">$inputFrom.FlowInputUnit</span>
+        <span slot="right" class="unitSpan">{{showFlowInputUnitValue()}}</span>
       </x-input>
       <x-input
         v-model="inputFrom.DesignTemp"
@@ -633,7 +642,6 @@
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
       <x-input
-        v-if="inputFrom.SingleGasType!='10'"
         v-model="inputFrom.AtmPressure"
         placeholder="请输入"
         placeholder-align="right"
@@ -915,11 +923,8 @@ export default {
       namelist: [],
       //流量计名称 
       lljmclist: [
-        { key: "1", value: "XXXX流量计名称" },
-        { key: "2", value: "脉冲输出流量计" },
         { key: "3", value: "线性电流输出流量计" },
         { key: "4", value: "差压电流输出流量计" }
-        
       ],
       //流量信号单位	选择项	m3/h  kg/h  t/h  Nm3/h  Hm3/h共5个选项
       llxhdwlist:[
@@ -930,6 +935,17 @@ export default {
         { key: "5", value: "Hm3/h" }
         
       ],
+      /*
+      llxhdwlist:[
+        { "1":"m3/h" },
+        { "2": "kg/h" }
+      ],
+      
+      */
+      mian:{ key: "", value: "" },
+      key1:null,
+      value1:null,
+      value:null,
 
       ysnumberlist: [
         { key: "1", value: "AGA-NX19" },
@@ -974,7 +990,7 @@ export default {
     };
   },
   created() {
-    this.inputFrom.FlowMeter_Type = "2";
+    //this.inputFrom.FlowMeter_Type = "2";
     if (!getToken()) {
       localStorage.setItem("post", this.$router.history.current.fullPath);
       this.$router.push("/");
@@ -988,6 +1004,13 @@ export default {
     }
   },
   methods: {
+    showFlowInputUnitValue(){
+      let key = this.inputFrom.FlowInputUnit;
+      if (key == undefined ||key=="" || key == null) return "";
+      key = parseInt(key)-1; 
+      //console.log(key+"-");
+      return this.llxhdwlist[key].value;
+    },
     onChange(val) {
       if (val === "7") { //7=天然气
         this.inputFrom.Yasuosuanfa = "1";
@@ -1053,7 +1076,6 @@ export default {
         DesignTemp:"",
         DesignPres:"",
         gongzuo_yali_float:"",
-        AtmPressure:"",
         Gk_Sheshi_wendu_float:"",
         GasHumidity:"",
         Flow_Input_mA_float:"",

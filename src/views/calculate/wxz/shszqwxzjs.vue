@@ -414,7 +414,7 @@ export default {
         DenistyDeg20: "",
         LiquidExpansion: ""
       };
-      return 
+      return inputFrom;
 
     },
     clearData() {

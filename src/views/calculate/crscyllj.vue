@@ -597,6 +597,15 @@
         <span slot="right" class="unitSpan">MPa</span>
       </x-input> 
       <x-input
+        v-model="inputFrom.AtmPressure"
+        title="当地大气压"
+        placeholder="请输入"
+        placeholder-align="right"
+        text-align="right"
+      >
+        <span slot="right" class="unitSpan">MPa</span>
+      </x-input>
+      <x-input
         v-model="inputFrom.Gk_Sheshi_wendu_float"
         placeholder="请输入"
         placeholder-align="right"
@@ -616,7 +625,6 @@
         <span slot="right" class="unitSpan">%</span>
       </x-input>
       <x-input
-        v-if="inputFrom.Fluid_Type==='6'"
         v-model="inputFrom.Dp_Oc_Curr_float"
         title="差压值"
         placeholder="请输入(大于等于0)"
@@ -647,7 +655,7 @@
       </x-input>
       <x-input
         v-if="inputFrom.Fluid_Type==='6'"
-        v-model="inputFrom.AtmPressure"
+        v-model="inputFrom.RefPressure"
         title="大气压"
         placeholder="请输入"
         placeholder-align="right"
@@ -1063,6 +1071,7 @@ export default {
         RefViscosity:"",
         StdCompression:"",
         AtmPressure: "",
+        RefPressure:"",
         Dszs_float: "",
         OpeCompression: "",
         DenistyDeg20: "",
