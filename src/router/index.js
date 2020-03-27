@@ -271,6 +271,7 @@ router.beforeEach((to, from, next) => {
       next();
     }else {
       let nextRouter = {path: '/'};
+      //no more use the web login.
       if (commonUtils.isMobile()){
         nextRouter.path = "/mobile/login";
       }else{

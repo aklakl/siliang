@@ -83,7 +83,7 @@
               <p>欢迎广大工程师提出宝贵意见</p>
             </div>
           </div>
-
+<!--
           <div class="media" @click="toLtwxzjs">
             <div class="media-left">
               <img src="@/assets/ltwxz.jpg" class="img" alt />
@@ -94,8 +94,10 @@
               <p>欢迎广大工程师提出宝贵意见</p>
             </div>
           </div>
+--> 
+
         </div>
-      
+     
       
     <div @click="fn_show_lljsjjs()">
     <cell title="流量计设计计算" is-link ></cell>
@@ -136,7 +138,7 @@
       设计计算 皮托式流量计 流量计算差压    ptsllj_lljscy
 
       流量工程师工具箱  llgcsgjx
-      -->
+     
       <cell title="流量工程师工具箱" is-link @click.native="tip"></cell>
       <div>
         <div class="media" @click="toGnTest">
@@ -157,9 +159,8 @@
             <p>print and preview</p>
           </div>
         </div>
-
-
       </div>
+       -->
     </group>
   </div>
 </template>

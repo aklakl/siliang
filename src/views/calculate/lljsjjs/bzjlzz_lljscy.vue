@@ -988,11 +988,11 @@ export default {
         { key: "4", value: "差压电流输出流量计" }
       ],
       lldwlist:[
-        { key: "（kg/h）", value: "质量流量（kg/h）" },
-        { key: "（t/h）", value: "质量流量（t/h）" },
-        { key: "（m3/h）", value: "工况体积流量（m3/h）" },
-        { key: "（Nm3/h）", value: "0℃况体积流量" },
-        { key: "（Hm3/h）", value: "20℃况体积流量" }
+        { key: "1", value: "质量流量（kg/h）" },
+        { key: "2", value: "质量流量（t/h）" },
+        { key: "3", value: "工况体积流量（m3/h）" },
+        { key: "4", value: "0℃况体积流量" },
+        { key: "5", value: "20℃况体积流量" }
       ],
       //流量计名称 
       lljmclist: [
@@ -1071,6 +1071,13 @@ export default {
     }
   },
   methods: {
+    showFlowInputUnitValue(){
+      let key = this.inputFrom.FlowInputUnit;
+      if (key == undefined ||key=="" || key == null) return "";
+      key = parseInt(key)-1; 
+      //console.log(key+"-");
+      return this.lldwlist[key].value;
+    },
     onChange(val) {
       if (val === "7") { //7=天然气
         this.inputFrom.Yasuo_xishu_suanfa = "1";

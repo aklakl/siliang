@@ -599,7 +599,7 @@
         direction="rtl"
         text-align="right"
       ></selector>
-      -->
+
 
       <x-input
         v-model="inputFrom.DpLrv"
@@ -619,6 +619,7 @@
       >
         <span slot="right" class="unitSpan">$inputFrom.FlowInputUnit</span>
       </x-input>
+ -->
       <x-input
         v-model="inputFrom.DesignTemp"
         title="设计温度"
@@ -678,7 +679,7 @@
 
       <selector
         placeholder="请选择"
-        v-model="inputFrom.Jieliujian_lldw_uchar"
+        v-model="inputFrom.FlowInputUnit"
         title="流量单位"
         name="name"
         :options="lldwlist"
@@ -703,7 +704,7 @@
         placeholder-align="right"
         text-align="right"
       >
-        <span slot="right" class="unitSpan">{{inputFrom.Jieliujian_lldw_uchar}}</span>
+        <span slot="right" class="unitSpan">{{showFlowInputUnitValue()}}</span>
       </x-input>
       <x-input
         v-model="inputFrom.FlowInputCom_double"
@@ -712,7 +713,7 @@
         placeholder-align="right"
         text-align="right"
       >
-        <span slot="right" class="unitSpan">{{inputFrom.Jieliujian_lldw_uchar}}</span>
+        <span slot="right" class="unitSpan">{{showFlowInputUnitValue()}}</span>
       </x-input>
       <x-input
         v-model="inputFrom.FlowInputMin_double"
@@ -721,7 +722,7 @@
         placeholder-align="right"
         text-align="right"
       >
-        <span slot="right" class="unitSpan">{{inputFrom.Jieliujian_lldw_uchar}}</span>
+        <span slot="right" class="unitSpan">{{showFlowInputUnitValue()}}</span>
       </x-input>
 
       <selector
@@ -796,7 +797,7 @@
       </x-input>
 
       <x-input
-        v-if="inputFrom.Fluid_Type==='6' && inputFrom.Fluid_Type==='3'"
+        v-if="inputFrom.Fluid_Type==='6'||inputFrom.Fluid_Type==='3'"
         v-model="inputFrom.RefViscosity"
         title="动力粘度"
         placeholder="请输入"
@@ -1026,6 +1027,13 @@ export default {
         }
       ],
       namelist: [],
+      lldwlist:[
+        { key: "1", value: "质量流量（kg/h）" },
+        { key: "2", value: "质量流量（t/h）" },
+        { key: "3", value: "工况体积流量（m3/h）" },
+        { key: "4", value: "0℃况体积流量" },
+        { key: "5", value: "20℃况体积流量" }
+      ],
       //流量计名称 
       lljmclist: [
         { key: "1", value: "XXXX流量计名称" },
@@ -1117,6 +1125,13 @@ export default {
     }
   },
   methods: {
+    showFlowInputUnitValue(){
+      let key = this.inputFrom.FlowInputUnit;
+      if (key == undefined ||key=="" || key == null) return "";
+      key = parseInt(key)-1; 
+      //console.log(key+"-");
+      return this.lldwlist[key].value;
+    },
     onChange(val) {
       if (val === "7") { //7=天然气
         this.inputFrom.Yasuosuanfa = "1";

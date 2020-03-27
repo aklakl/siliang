@@ -389,7 +389,7 @@ export default {
   .flex-left {
     text-align: left;
     .time {
-      font-size: 12px;
+      font-size: 15px;
       color: #00ae66;
     }
   }
@@ -400,4 +400,17 @@ export default {
     }
   }
 }
+body {
+  font-size:15px; 
+  font-weight:normal;
+}
+.placeHolderforTest {
+  font-size:15px; 
+  font-weight:normal;
+}
+span {
+  font-size:15px; 
+  font-weight:normal;
+}
+//font-size: 15px; font-weight:normal
 </style>

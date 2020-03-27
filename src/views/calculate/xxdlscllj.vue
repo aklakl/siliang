@@ -586,7 +586,7 @@
         text-align="right"
       ></selector>
     <!-- 
-      {{key1}}{{value1}}{{value}},{{inputFrom.FlowInputUnit}}
+      {{key1}}{{value1}}{{value}},{{showFlowInputUnitValue()}}
       @on-change="llxhdwlist_onChange(key1,value1)"
       :key="key1"
         :value="value1"
@@ -697,7 +697,7 @@
         <span slot="right" class="unitSpan">MPa</span>
       </x-input>
       <x-input
-        v-model="inputFrom.AtmPressure"
+        v-model="inputFrom.RefPressure"
         title="大气压"
         placeholder="请输入"
         placeholder-align="right"
